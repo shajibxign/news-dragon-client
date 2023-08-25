@@ -1,8 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import logo from "../../../assets/Dragon_Photos/logo.png";
 import moment from "moment/moment";
 import Marquee from "react-fast-marquee";
-import {Button, Container, Nav , Navbar, NavDropdown } from 'react-bootstrap';
+import {Button, Container, Nav , Navbar } from 'react-bootstrap';
 
 const Header = () => {
   return (
@@ -20,7 +21,7 @@ const Header = () => {
       </div>
       <div className="container d-flex justify-content-center align-items-center mt-5 px-0 bg-light">
         <Button variant="danger" className="rounded-0 px-5">Latest</Button>
-        <Marquee speed={120} className="ml-5">Australia news live: AEC publicly refutes ‘factually incorrect’ complaints from Dutton and Ley over referendum vote rules</Marquee>
+        <Marquee speed={80} className="ml-5">Australia news live: AEC publicly refutes ‘factually incorrect’ complaints from Dutton and Ley over referendum vote rules</Marquee>
       </div>
       <div>
       <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary container my-3">
