@@ -6,11 +6,13 @@ import Footer from "../Pages/Shared/Footer/Footer";
 import { Container, Row, Col } from "react-bootstrap";
 import RightNav from "../Pages/Shared/Navs/RightNav";
 import LeftNav from "../Pages/Shared/Navs/LeftNav";
+import CustomNavbar from "../Pages/Shared/CustomNavbar/CustomNavbar";
 
 const Main = () => {
   return (
     <>
       <Header></Header>
+      <CustomNavbar></CustomNavbar>
       <Container>
       <Row>
         <Col  lg={3} sm={3}><LeftNav></LeftNav></Col>

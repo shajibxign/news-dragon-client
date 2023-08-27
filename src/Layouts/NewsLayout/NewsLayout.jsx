@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from '../../Pages/Shared/Header/Header';
 import { Col, Container, Row } from 'react-bootstrap';
-import LeftNav from '../../Pages/Shared/Navs/LeftNav';
 import { Outlet } from 'react-router-dom';
 import RightNav from '../../Pages/Shared/Navs/RightNav';
 import Footer from '../../Pages/Shared/Footer/Footer';
