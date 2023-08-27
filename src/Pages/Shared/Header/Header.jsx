@@ -6,6 +6,9 @@ import moment from "moment/moment";
 import Marquee from "react-fast-marquee";
 import {Button, Container, Nav , Navbar } from 'react-bootstrap';
 import AuthProvider, { AuthContext } from "../../../Providers/AuthProvider";
+import {
+  FaRegCircleUser
+} from "react-icons/fa6";
 
 const Header = () => {
   const {user} = useContext(AuthContext)
@@ -38,8 +41,8 @@ const Header = () => {
             <Nav.Link href="#pricing">Career</Nav.Link>
           </Nav>
           <Nav >
-            <Nav.Link href="#deets">{user.displayName}</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">Login</Nav.Link>
+            {user && <Nav.Link href="#deets"><FaRegCircleUser style={{fontSize : '2rem'}}></FaRegCircleUser></Nav.Link>}
+            {user ? <Nav.Link eventKey={2} href="#memes">Login</Nav.Link> : <Nav.Link eventKey={2} href="#memes">Login</Nav.Link>}
           </Nav>
         </Navbar.Collapse>
       </Container>
