@@ -1,11 +1,14 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import {useContext}  from "react";
 import logo from "../../../assets/Dragon_Photos/logo.png";
+// import PropTypes from 'prop-types';
 import moment from "moment/moment";
 import Marquee from "react-fast-marquee";
 import {Button, Container, Nav , Navbar } from 'react-bootstrap';
+import AuthProvider, { AuthContext } from "../../../Providers/AuthProvider";
 
 const Header = () => {
+  const {user} = useContext(AuthContext)
   return (
     <>
       <div className="d-flex justify-content-center align-items-center mt-5">
@@ -35,7 +38,7 @@ const Header = () => {
             <Nav.Link href="#pricing">Career</Nav.Link>
           </Nav>
           <Nav >
-            <Nav.Link href="#deets">Profile</Nav.Link>
+            <Nav.Link href="#deets">{user.displayName}</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">Login</Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -45,5 +48,12 @@ const Header = () => {
     </>
   );
 };
+
+// Header.propTypes = {
+//   user: PropTypes.shape({
+//     displayName: PropTypes.object.isRequired,
+//     // Add other properties if applicable
+//   }).isRequired,
+// };
 
 export default Header;
