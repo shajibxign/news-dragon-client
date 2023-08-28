@@ -15,7 +15,7 @@ const Reg = () => {
 
     createUser(email, password).then(result => {
       const createdUser = result.user;
-      console.log(createdUser);
+      // console.log(createdUser);
     }).catch(error => console.log(error))
   }
   return (

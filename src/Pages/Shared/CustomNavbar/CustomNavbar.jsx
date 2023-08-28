@@ -1,12 +1,18 @@
 // eslint-disable-next-line no-unused-vars
 import { useContext } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
 
 const CustomNavbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, signOutFn } = useContext(AuthContext);
+  const handleSignOut = () => {
+    signOutFn()
+      .then()
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <Navbar
@@ -25,20 +31,17 @@ const CustomNavbar = () => {
             </Nav>
             <Nav>
               {user && (
-                <Nav.Link href="#deets">
-                  <FaRegCircleUser
-                    style={{ fontSize: "2rem" }}
-                  ></FaRegCircleUser>
-                </Nav.Link>
+                <FaRegCircleUser style={{ fontSize: "2rem" }}></FaRegCircleUser>
               )}
+
               {user ? (
-                <Nav.Link eventKey={2} href="#memes">
-                  Login
-                </Nav.Link>
+                <Button onClick={handleSignOut} variant="secondary">
+                  Logout
+                </Button>
               ) : (
-                <Nav.Link eventKey={2} href="#memes">
-                  Login
-                </Nav.Link>
+                <Link to="/login">
+                  <Button variant="secondary">Login</Button>
+                </Link>
               )}
             </Nav>
           </Navbar.Collapse>

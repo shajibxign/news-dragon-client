@@ -1,22 +1,32 @@
 import React, { useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
-  const {SignInUser} = useContext(AuthContext);
+  
+  const { SignInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log('login page lc:', location);
+  const from = location.state?.from?.pathname || 'category/0'
+  
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.Password.value;
 
-    SignInUser(email, password).then(result => {
-      const SignedInUser = result.user;
-      console.log(SignedInUser);
-    }).catch(error => console.log(error))
-
-  }
+    SignInUser(email, password)
+      .then((result) => {
+        const SignedInUser = result.user;
+        console.log(SignedInUser);
+        navigate(from, {replace:true});
+      })
+      .catch((error) => console.log(error));
+    
+  };
 
   return (
     <Container>
@@ -48,10 +58,9 @@ const Login = () => {
         </Button>
         <br></br>
         <Form.Text className="text-success">
-          Don't have an account? <Link to='/register'>Register</Link>
+          Don't have an account? <Link to="/register">Register</Link>
         </Form.Text>
-        <Form.Text className="text-danger">
-        </Form.Text>
+        <Form.Text className="text-danger"></Form.Text>
       </Form>
     </Container>
   );

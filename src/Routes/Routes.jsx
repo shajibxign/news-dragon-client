@@ -7,6 +7,7 @@ import News from '../Pages/News/News';
 import LoginLayout from '../Layouts/LoginLayout/LoginLayout';
 import Reg from '../Pages/LogReg/Reg';
 import Login from '../Pages/LogReg/Login';
+import PrivateRoutes from './PrivateRoutes';
 
 const routes = [
   {
@@ -36,7 +37,7 @@ const routes = [
     children: [
       {
         path: ':id',
-        element: <News />,
+        element: <PrivateRoutes> <News /> </PrivateRoutes> ,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/news/${params.id}`),
       },
