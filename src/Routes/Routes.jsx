@@ -8,6 +8,7 @@ import LoginLayout from '../Layouts/LoginLayout/LoginLayout';
 import Reg from '../Pages/LogReg/Reg';
 import Login from '../Pages/LogReg/Login';
 import PrivateRoutes from './PrivateRoutes';
+import TOC from '../Pages/Shared/TOC';
 
 const routes = [
   {
@@ -42,6 +43,10 @@ const routes = [
           fetch(`http://localhost:3000/news/${params.id}`),
       },
     ],
+  },
+  {
+    path: 'terms',
+    element: <TOC/>
   },
 ];
 

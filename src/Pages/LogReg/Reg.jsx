@@ -1,22 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Reg = () => {
   const {createUser} = useContext(AuthContext);
+  const [isChecked, setIsChecked] = useState(false);
   const handleRegister = event => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const password = form.Password.value;
     const email = form.email.value;
-    // console.log(name, email, password);
+    // console.log(form);
 
     createUser(email, password).then(result => {
       const createdUser = result.user;
       // console.log(createdUser);
     }).catch(error => console.log(error))
+  }
+
+  const handleCheckbox = (event) => {
+    setIsChecked(event.target.checked);
   }
   return (
     <Container>
@@ -53,15 +58,16 @@ const Reg = () => {
           <Form.Check
             type="checkbox"
             name="accept"
-            label="Accept terms & conditions"
+            onClick={handleCheckbox}
+            label={<>Accept <Link to='/terms' className="text-decoration-none">Terms & Conditions</Link> </>}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" disabled={!isChecked} type="submit">
           Register
         </Button>
         <br></br>
         <Form.Text className="text-success">
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account? <Link to="/login" className="text-decoration-none">Login</Link>
         </Form.Text>
         <Form.Text className="text-danger"></Form.Text>
       </Form>

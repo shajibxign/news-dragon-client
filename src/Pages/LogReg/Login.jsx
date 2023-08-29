@@ -50,15 +50,12 @@ const Login = () => {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
         <Button variant="primary" type="submit">
           Login
         </Button>
         <br></br>
         <Form.Text className="text-success">
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/register" className="text-decoration-none">Register</Link>
         </Form.Text>
         <Form.Text className="text-danger"></Form.Text>
       </Form>
