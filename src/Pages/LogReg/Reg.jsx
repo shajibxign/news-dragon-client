@@ -6,6 +6,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 const Reg = () => {
   const {createUser} = useContext(AuthContext);
   const [isChecked, setIsChecked] = useState(false);
+  // console.log(import.meta.env.VITE_PASS);
   const handleRegister = event => {
     event.preventDefault();
     const form = event.target;
